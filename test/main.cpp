@@ -1,5 +1,14 @@
+//1. Создать и инициализировать переменные пройденных типов данных (short int, int, long long, char, bool, float, double).
+//2. Создать перечисление (enum) с возможными вариантами символов для игры в крестики-нолики.
+//3. Создать массив, способный содержать значения такого перечисления и инициализировать его.
+//4. * Создать структуру (struct) данных «Поле для игры в крестики-нолики» и снабдить его всеми необходимыми свойствами (подумайте что может понадобиться).
+//5. ** Создать структуру (struct MyVariant) объединяющую: union MyData (int, float, char) и 3-и битовых поля (флага)
+// указывающими какого типа значение в данный момент содержится в объединении (isInt, isFloat, isChar).
+// Продемонстрировать пример использования в коде этой структуры.
+
 #include <iostream>
 #include <iomanip>
+
 
 int main(int argc, const char** argv) {
 
@@ -21,10 +30,10 @@ int main(int argc, const char** argv) {
 
 
 //  PART #2
-    enum crossZeroChars{
-        VALUE_NULL = 0,
-        VALUE_ZERO = 1,
-        VALUE_CROSS = 2
+    enum crossZeroChars: char{
+        VALUE_NULL = '_',
+        VALUE_ZERO = '0',
+        VALUE_CROSS = 'X'
     };
 
 
@@ -74,17 +83,14 @@ int main(int argc, const char** argv) {
         int IS_INT : 1;
         MyData data;
         void setValue(int val){
-            data.i = val;
             IS_CHAR = IS_FLOAT = false;
             IS_INT = true;
         }
         void setValue(char val){
-            data.c = val;
             IS_INT = IS_FLOAT = false;
             IS_CHAR = true;
         }
         void setValue(float val){
-            data.f = val;
             IS_INT = IS_CHAR = false;
             IS_FLOAT = true;
         }
@@ -92,15 +98,8 @@ int main(int argc, const char** argv) {
 
     MyVariant myVar;
 
-    myVar.setValue(121.212f);
-    std::cout << (bool)myVar.IS_CHAR << std::endl;
-    std::cout << (bool)myVar.IS_FLOAT << std::endl;
-    std::cout << (bool)myVar.IS_INT << std::endl;
-
+    myVar.setValue(121.123f);
     myVar.setValue(121);
-    std::cout << (bool)myVar.IS_CHAR << std::endl;
-    std::cout << (bool)myVar.IS_FLOAT << std::endl;
-    std::cout << (bool)myVar.IS_INT << std::endl;
 
     return 0;
 }
