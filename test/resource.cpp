@@ -12,9 +12,9 @@
 //        printf("Hello user");
 //    }
 //    else if (answer == 'n'){
-//        printf("Fuck you!");
+//        printf("Nooo!");
 //    } else {
-//        printf("Double Fuck YOU!");
+//        printf("Double Nooo!");
 //    }
 //    int a = 10;
 //    int b = 6;
